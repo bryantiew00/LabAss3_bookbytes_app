@@ -135,7 +135,7 @@ class _CartPageState extends State<CartPage> {
           total = 0.0;
           for (var v in data['data']['carts']) {
             Carts cartItem = Carts.fromJson(v);
-            total += (double.parse(v['book_price']) * int.parse(v['cart_qty']));
+            total += (double.parse(v['book_price']) * int.parse(v['cart_qty']+ 10.00));
             mergeCartItems(cartItem);
           }
           setState(() {});
