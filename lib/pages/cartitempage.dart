@@ -127,20 +127,20 @@ class _CartPageState extends State<CartPage> {
       Uri.parse("${MyServerConfig.server}php/loading_cart.php?userid=$userid"),
     )
         .then((response) {
-      if (response.statusCode == 200) {
+        if (response.statusCode == 200) {
         log(response.body);
         var data = jsonDecode(response.body);
         if (data['status'] == "success") {
           cartList.clear();
           total = 0.0;
+        int totalItems = 0; // Initialize a variable to store the total number of items         
           for (var v in data['data']['carts']) {
             Carts cartItem = Carts.fromJson(v);
-            total += (double.parse(v['book_price']) * int.parse(v['cart_qty']+ 10.00));
+            total += (double.parse(v['book_price']) * int.parse(v['cart_qty'] + 10.00));
             mergeCartItems(cartItem);
           }
+          print("Total Number of Items: $totalItems"); // Print the total number of items
           setState(() {});
-        } else {
-          // Handle status failed scenario
         }
       } else {
         // Handle server error scenario
