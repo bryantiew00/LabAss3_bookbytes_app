@@ -136,7 +136,7 @@ class _CartPageState extends State<CartPage> {
         int totalItems = 0; // Initialize a variable to store the total number of items         
           for (var v in data['data']['carts']) {
             Carts cartItem = Carts.fromJson(v);
-            total += (double.parse(v['book_price']) * int.parse(v['cart_qty'] + 10.00));
+            total += (double.parse(v['book_price']) * int.parse(v['cart_qty']))+ 10.00;
             mergeCartItems(cartItem);
           }
           print("Total Number of Items: $totalItems"); // Print the total number of items
