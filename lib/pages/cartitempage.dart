@@ -127,7 +127,7 @@ class _CartPageState extends State<CartPage> {
       Uri.parse("${MyServerConfig.server}php/loading_cart.php?userid=$userid"),
     )
         .then((response) {
-        if (response.statusCode == 200) {
+      if (response.statusCode == 200) {
         log(response.body);
         var data = jsonDecode(response.body);
         if (data['status'] == "success") {
@@ -142,6 +142,9 @@ class _CartPageState extends State<CartPage> {
           print("Total Number of Items: $totalItems"); // Print the total number of items
           setState(() {});
         } else {
+          // Handle status failed scenario
+        }
+      } else {
         // Handle server error scenario
       }
     }).timeout(const Duration(seconds: 5), onTimeout: () {
