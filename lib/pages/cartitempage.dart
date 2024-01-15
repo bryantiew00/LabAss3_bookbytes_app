@@ -141,8 +141,7 @@ class _CartPageState extends State<CartPage> {
           }
           print("Total Number of Items: $totalItems"); // Print the total number of items
           setState(() {});
-        }
-      } else {
+        } else {
         // Handle server error scenario
       }
     }).timeout(const Duration(seconds: 5), onTimeout: () {
